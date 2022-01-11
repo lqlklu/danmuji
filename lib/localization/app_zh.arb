@@ -1,6 +1,10 @@
 {
   "appTitle": "弹幕姬",
-  "@appTitle": {
-    "description": "某个标题"
-  }
+  "roomid_hint": "房间号",
+  "roomid_error": "请输入房间号",
+  "enter": "进入",
+  "settings": "设置",
+  "settings_systemTheme": "系统主题",
+  "settings_lightTheme": "亮色主题",
+  "settings_darkThem": "暗色主题"
 }

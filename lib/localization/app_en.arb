@@ -1,7 +1,10 @@
 {
   "appTitle": "Danmuji",
-  "@appTitle": {
-    "description": "The title of the application"
-  }
-
+  "roomid_hint": "Room id",
+  "roomid_error": "Please enter room id",
+  "enter": "Enter",
+  "settings": "Settings",
+  "settings_systemTheme": "System Theme",
+  "settings_lightTheme": "Light Theme",
+  "settings_darkThem": "Dark Theme"
 }

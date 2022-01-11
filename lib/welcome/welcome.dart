@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:danmuji/store/store.dart';
 import 'package:danmuji/content/content.dart';
@@ -12,8 +13,10 @@ class Welcome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
+        title: Text(t.appTitle),
         actions: [
           IconButton(
             onPressed: () {
@@ -25,13 +28,9 @@ class Welcome extends StatelessWidget {
       ),
       primary: true,
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: _RoomIdForm(),
-          )
-        ],
+        children: [_RoomIdForm()],
       ),
     );
   }
@@ -57,6 +56,7 @@ class _RoomIdFormState extends State<_RoomIdForm> {
   @override
   Widget build(BuildContext context) {
     final store = Provider.of<AppStore>(context);
+    final t = AppLocalizations.of(context)!;
 
     return Form(
       key: _formKey,
@@ -64,12 +64,15 @@ class _RoomIdFormState extends State<_RoomIdForm> {
         children: [
           TextFormField(
             controller: contoller,
-            decoration: const InputDecoration(
-              hintText: 'Room id',
+            decoration: InputDecoration(
+              hintText: t.roomid_hint,
             ),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter some text';
+                return t.roomid_error;
+              }
+              if (int.tryParse(value) == null) {
+                return t.roomid_error;
               }
               return null;
             },
@@ -86,7 +89,7 @@ class _RoomIdFormState extends State<_RoomIdForm> {
                   Navigator.pushNamed(context, Content.routeName);
                 }
               },
-              child: const Text('Submit'),
+              child: Text(t.enter),
             ),
           ),
         ],

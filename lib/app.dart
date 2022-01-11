@@ -1,6 +1,7 @@
-import 'package:danmuji/blive/blive_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'content/content.dart';
 import 'store/store.dart';
@@ -19,7 +20,20 @@ class MyApp extends StatelessWidget {
         child: AnimatedBuilder(
           animation: settingsController,
           builder: (context, child) => MaterialApp(
-            title: "Danmuji",
+            //l10n
+            onGenerateTitle: (context) =>
+                AppLocalizations.of(context)!.appTitle,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en', ''),
+              Locale('zh', ''),
+            ],
+            //theme
             theme: ThemeData(
               primarySwatch: Colors.pink,
             ),
